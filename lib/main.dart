@@ -3,11 +3,17 @@ import 'package:notes_app_sqlite/data/local/db.dart';
 // import 'package:notes_app_sqlite/data/local/db.dart';
 import 'package:notes_app_sqlite/pages/home.dart';
 import 'package:notes_app_sqlite/providers/db_provider.dart';
+import 'package:notes_app_sqlite/providers/theme_provider.dart';
 import 'package:provider/provider.dart';
 
 void main() => runApp(
-  ChangeNotifierProvider(
-    create: (context) => DBProvider(db: DB.getInstance),
+  MultiProvider(
+    providers: [
+      ChangeNotifierProvider(
+        create: (context) => DBProvider(db: DB.getInstance),
+      ),
+      ChangeNotifierProvider(create: (context) => ThemeProvider()),
+    ],
     child: MyApp(),
   ),
 );
@@ -21,10 +27,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'My Notes',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        brightness: Brightness.light,
-        primaryColor: Colors.lightBlueAccent,
-      ),
+      themeMode: context.watch<ThemeProvider>().getTheme()
+          ? ThemeMode.dark
+          : ThemeMode.light,
+      darkTheme: ThemeData.dark(),
+      theme: ThemeData(brightness: Brightness.light, useMaterial3: true),
       home: Home(),
     );
   }

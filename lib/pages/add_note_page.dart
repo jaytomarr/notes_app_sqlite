@@ -47,11 +47,11 @@ class AddNotePage extends StatelessWidget {
                 label: Text('Title'),
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
-                  borderSide: BorderSide(color: Colors.black45),
+                  borderSide: BorderSide(color: Colors.grey),
                 ),
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
-                  borderSide: BorderSide(color: Colors.black45),
+                  borderSide: BorderSide(color: Colors.grey),
                 ),
               ),
             ),
@@ -65,11 +65,11 @@ class AddNotePage extends StatelessWidget {
                 label: Text('Description'),
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
-                  borderSide: BorderSide(color: Colors.black45),
+                  borderSide: BorderSide(color: Colors.grey),
                 ),
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
-                  borderSide: BorderSide(color: Colors.black45),
+                  borderSide: BorderSide(color: Colors.grey),
                 ),
               ),
             ),
@@ -83,6 +83,9 @@ class AddNotePage extends StatelessWidget {
                         RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
+                      ),
+                      backgroundColor: WidgetStateProperty.all(
+                        Colors.lightBlueAccent.shade100,
                       ),
                     ),
                     onPressed: () async {
@@ -124,7 +127,10 @@ class AddNotePage extends StatelessWidget {
                       titleController.clear();
                       descController.clear();
                     },
-                    child: Text(isUpdate ? 'Update Note' : 'Add Note'),
+                    child: Text(
+                      isUpdate ? 'Update Note' : 'Add Note',
+                      style: TextStyle(color: Colors.black),
+                    ),
                   ),
                 ),
                 SizedBox(width: 10),
@@ -136,11 +142,17 @@ class AddNotePage extends StatelessWidget {
                           borderRadius: BorderRadius.circular(10),
                         ),
                       ),
+                      backgroundColor: WidgetStateProperty.all(
+                        Colors.lightBlueAccent.shade100,
+                      ),
                     ),
                     onPressed: () {
                       Navigator.pop(context);
                     },
-                    child: Text('Cancel'),
+                    child: Text(
+                      'Cancel',
+                      style: TextStyle(color: Colors.black),
+                    ),
                   ),
                 ),
               ],

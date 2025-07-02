@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:notes_app_sqlite/data/local/db.dart';
 import 'package:notes_app_sqlite/pages/add_note_page.dart';
+import 'package:notes_app_sqlite/pages/settings.dart';
 import 'package:notes_app_sqlite/providers/db_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -33,7 +34,20 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('My Notes'), centerTitle: true),
+      appBar: AppBar(
+        title: Text('My Notes'),
+        centerTitle: true,
+        actions: [
+          InkWell(
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => Settings()),
+            ),
+            child: Icon(Icons.settings),
+          ),
+          SizedBox(width: 4),
+        ],
+      ),
       body: Consumer<DBProvider>(
         builder: (_, provider, __) {
           List<Map<String, dynamic>> allNotes = provider.getNotes();
@@ -119,6 +133,8 @@ class _HomeState extends State<Home> {
           //   },
           // );
         },
+        backgroundColor: Colors.lightBlueAccent.shade100,
+        foregroundColor: Colors.black,
         child: Icon(Icons.add),
       ),
     );
