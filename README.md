@@ -1,3 +1,5 @@
 # notes_app_sqlite
 
-Simple Note taking app using SQLite for local database
+Simple Note taking app
+- SQLite for local database
+- Provider for State Management
